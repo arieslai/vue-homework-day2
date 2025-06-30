@@ -62,7 +62,7 @@ const formatUrlCollection = (urlCollection) => {
     <div class="max-w-4xl mx-auto">
       <!-- 標題區域 -->
       <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-primary mb-2">收藏網址小工具</h1>
+        <h1 class="text-4xl font-bold text-primary-content mb-2">收藏網址小工具</h1>
         <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
       </div>
 
@@ -109,7 +109,7 @@ const formatUrlCollection = (urlCollection) => {
       <!-- 收藏列表區域 -->
       <div class="card bg-base-100 shadow-xl" v-if="urlCollections.length > 0">
         <div class="card-body">
-          <h2 class="card-title text-2xl mb-6 text-primary">
+          <h2 class="card-title text-2xl mb-6 text-primary-content">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -123,7 +123,7 @@ const formatUrlCollection = (urlCollection) => {
               class="flex items-center justify-between p-4 bg-base-200 rounded-lg border border-base-300 hover:border-primary transition-all duration-200 hover:shadow-md">
               <div class="flex-1 min-w-0 mr-4">
                 <a :href="urlCollection.url" target="_blank"
-                  class="text-primary hover:text-primary-focus font-medium break-all">
+                  class="text-primary-content hover:text-primary-content-focus font-medium break-all">
                   {{ formatUrlCollection(urlCollection) }}
                 </a>
               </div>
