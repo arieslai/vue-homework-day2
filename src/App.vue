@@ -71,14 +71,14 @@ const formatUrlCollection = (urlCollection) => {
         <div class="card-body">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div class="form-control">
-              <label class="label">
+              <label class="label mr-4">
                 <span class="label-text text-base-content/80">標題</span>
               </label>
               <input @keyup.enter="addNewUrlCollection" v-model.trim="newTitle" type="text" placeholder="輸入標題..."
                 class="input input-bordered input-primary focus:input-primary" />
             </div>
             <div class="form-control">
-              <label class="label">
+              <label class="label mr-4">
                 <span class="label-text text-base-content/80">網址</span>
               </label>
               <input @keyup.enter="addNewUrlCollection" v-model.trim="newUrl" type="text" placeholder="輸入網址..."
