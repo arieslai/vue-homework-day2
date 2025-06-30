@@ -5,6 +5,7 @@ const newTitle = ref('')
 const newUrl = ref('')
 const urlCollections = ref([])
 const auoUrlCollectionStorageKey = 'auo-url-collection-tool'
+const urlError = ref(false)
 
 onMounted(() => {
   const storedUrlCollections = localStorage.getItem(auoUrlCollectionStorageKey);
@@ -15,6 +16,7 @@ onMounted(() => {
 
 const addNewUrlCollection = () => {
   if (newUrl.value != '') {
+    urlError.value = false
     const urlCollection = {
       id: crypto.randomUUID(),
       url: newUrl.value,
@@ -24,14 +26,15 @@ const addNewUrlCollection = () => {
     localStorage.setItem(auoUrlCollectionStorageKey, JSON.stringify(urlCollections.value))
     clearInput()
   }
-  else
-    alert('請填寫網址')
-
+  else {
+    urlError.value = true
+  }
 }
 
 const clearInput = () => {
   newTitle.value = ''
   newUrl.value = ''
+  urlError.value = false
 }
 
 const deleteAll = () => {
@@ -53,7 +56,7 @@ const setLocalStorage = () => {
 }
 
 const formatUrlCollection = (urlCollection) => {
-  return `${urlCollection.title != '' ? `[${urlCollection.title}]` : ''}(${urlCollection.url})`
+  return `${urlCollection.title != '' ? `[${urlCollection.title}] ` : ''}${urlCollection.url}`
 }
 </script>
 
@@ -79,10 +82,11 @@ const formatUrlCollection = (urlCollection) => {
             </div>
             <div class="form-control">
               <label class="label mr-4">
-                <span class="label-text text-base-content/80">網址</span>
+                <span class="label-text text-base-content/80">網址 <span class="text-error">*</span></span>
               </label>
               <input @keyup.enter="addNewUrlCollection" v-model.trim="newUrl" type="text" placeholder="輸入網址..."
-                class="input input-bordered input-primary focus:input-primary" />
+                :class="['input input-bordered input-primary focus:input-primary', urlError ? 'input-error' : '']" />
+              <p v-if="urlError" class="mt-1 text-error text-sm">網址為必填欄位</p>
             </div>
           </div>
 
