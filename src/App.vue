@@ -53,7 +53,7 @@ const setLocalStorage = () => {
 }
 
 const formatUrlCollection = (urlCollection) => {
-  return `${urlCollection.titel != '' ? `[${urlCollection.title}]` : ''}(${urlCollection.url})`
+  return `${urlCollection.title != '' ? `[${urlCollection.title}]` : ''}(${urlCollection.url})`
 }
 </script>
 
