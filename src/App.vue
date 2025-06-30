@@ -49,7 +49,7 @@ const deleteUrlCollection = (urlCollection) => {
 }
 
 const setLocalStorage = () => {
-  localStorage.setItem(auoUrlCollectionStorageKey, urlCollections.value)
+  localStorage.setItem(auoUrlCollectionStorageKey, JSON.stringify(urlCollections.value))
 }
 
 const formatUrlCollection = (urlCollection) => {
