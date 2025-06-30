@@ -3,10 +3,11 @@ import { onMounted, ref } from 'vue';
 
 const newTitle = ref('')
 const newUrl = ref('')
-const urlCollections = ref([]);
+const urlCollections = ref([])
+const auoUrlCollectionStorageKey = 'auo-url-collection-tool'
 
 onMounted(() => {
-  const storedUrlCollections = localStorage.getItem('auo-url-collection-tool');
+  const storedUrlCollections = localStorage.getItem(auoUrlCollectionStorageKey);
   if (storedUrlCollections) {
     urlCollections.value = JSON.parse(storedUrlCollections);
   }
@@ -20,7 +21,7 @@ const addNewUrlCollection = () => {
       title: newTitle.value
     }
     urlCollections.value.unshift(urlCollection)
-    localStorage.setItem('auo-url-collection-tool', JSON.stringify(urlCollections.value))
+    localStorage.setItem(auoUrlCollectionStorageKey, JSON.stringify(urlCollections.value))
     clearInput()
   }
   else
@@ -48,7 +49,7 @@ const deleteUrlCollection = (urlCollection) => {
 }
 
 const setLocalStorage = () => {
-  localStorage.setItem('auo-url-collection-tool', urlCollections.value)
+  localStorage.setItem(auoUrlCollectionStorageKey, urlCollections.value)
 }
 
 const formatUrlCollection = (urlCollection) => {
